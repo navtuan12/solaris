@@ -37,7 +37,7 @@ RUN apt-get update \
   && rm -rf /var/lib/apt/lists/*
 
 SHELL ["/bin/bash", "-c"]
-ENV PATH /opt/conda/bin:$PATH
+ENV PATH=/opt/conda/bin:$PATH
 
 # install anaconda
 RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-4.5.4-Linux-x86_64.sh -O ~/miniconda.sh && \
@@ -59,7 +59,7 @@ RUN git clone https://github.com/cosmiq/solaris.git && \
     cd solaris && \
     git checkout ${solaris_branch} && \
     conda env create -f environment.yml
-ENV PATH /opt/conda/envs/solaris/bin:$PATH
+ENV PATH=/opt/conda/envs/solaris/bin:$PATH
 
 RUN cd solaris && pip install .
 
